@@ -7,14 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
-
-
 class BookListViewItem extends StatelessWidget {
   const BookListViewItem({super.key});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         GoRouter.of(context).push(AppRouter.kBookDetailsView);
       },
       child: SizedBox(
@@ -43,9 +41,10 @@ class BookListViewItem extends StatelessWidget {
                 children: [
                   SizedBox(
                       width: MediaQuery.of(context).size.width * .5,
-                      child:  Text(
+                      child: Text(
                         "Harry Potter and the Goblet of fire",
-                        style: Styles.textStyle20.copyWith(fontFamily: kGtSectrafine),
+                        style: Styles.textStyle20
+                            .copyWith(fontFamily: kGtSectrafine),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       )),
@@ -54,13 +53,23 @@ class BookListViewItem extends StatelessWidget {
                     'J.K. Rowling',
                     style: Styles.textStyle14,
                   ),
-                   const SizedBox(height: 3),
-                  Row(children: [
-                    Text("199 \$",style: Styles.textStyle20.copyWith(fontWeight: FontWeight.bold),),
-                   const Spacer(flex: 1,),
-                   const BookRaiting(),
-                    const Spacer(flex: 1,),
-                  ],)
+                  const SizedBox(height: 3),
+                  Row(
+                    children: [
+                      Text(
+                        "199 \$",
+                        style: Styles.textStyle20
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      const Spacer(
+                        flex: 1,
+                      ),
+                      const BookRaiting(),
+                      const Spacer(
+                        flex: 1,
+                      ),
+                    ],
+                  )
                 ],
               ),
             )

@@ -11,15 +11,12 @@ class CustomBookImage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
         child: Container(
-          
-          decoration:  BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-              image:const DecorationImage(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              image: const DecorationImage(
                   image: AssetImage(ASsetsData.testImage), fit: BoxFit.fill)),
         ),
       ),
     );
   }
 }
-
-

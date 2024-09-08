@@ -11,7 +11,7 @@ class BookRaiting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: mainAxisAlignment,
-      children:const [
+      children: const [
         Icon(
           FontAwesomeIcons.solidStar,
           color: Color(0xffFFDD4F),
