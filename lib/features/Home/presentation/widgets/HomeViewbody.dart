@@ -7,8 +7,6 @@ import 'package:flutter/material.dart';
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
-/*dfsdfsdfsds
-sdfsdf*/
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
