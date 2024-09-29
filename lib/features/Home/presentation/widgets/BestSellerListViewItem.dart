@@ -1,14 +1,17 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
-import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/Home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/Home/presentation/widgets/BookRaiting.dart';
+import 'package:bookly_app/features/Home/presentation/widgets/CustomBookImage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
+  const BookListViewItem({super.key, required this.bookModel});
+
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,19 +22,7 @@ class BookListViewItem extends StatelessWidget {
         height: 125,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 3 / 4,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: const DecorationImage(
-                          image: AssetImage(ASsetsData.testImage),
-                          fit: BoxFit.fill)),
-                ),
-              ),
-            ),
+            CustomBookImage(imageURL: bookModel.volumeInfo.imageLinks.thumbnail),
             const SizedBox(
               width: 30,
             ),
@@ -42,29 +33,29 @@ class BookListViewItem extends StatelessWidget {
                   SizedBox(
                       width: MediaQuery.of(context).size.width * .5,
                       child: Text(
-                        "Harry Potter and the Goblet of fire",
+                        bookModel.volumeInfo.title!,
                         style: Styles.textStyle20
                             .copyWith(fontFamily: kGtSectrafine),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       )),
                   const SizedBox(height: 3),
-                  const Text(
-                    'J.K. Rowling',
+                   Text(
+                    bookModel.volumeInfo.authors![0],
                     style: Styles.textStyle14,
                   ),
                   const SizedBox(height: 3),
                   Row(
                     children: [
                       Text(
-                        "199 \$",
+                        "FREE",
                         style: Styles.textStyle20
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       const Spacer(
                         flex: 1,
                       ),
-                      const BookRaiting(),
+                       BookRaiting(raiting: bookModel.volumeInfo.pageCount??0,),
                       const Spacer(
                         flex: 1,
                       ),
